@@ -1,20 +1,86 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-toolbar class="header-bar" color="primary">
+  <button mat-icon-button (click)="sideNav.toggle()"><mat-icon>menu</mat-icon></button>
+  wj LEARN
+  <span class="toolbar-seprator"></span>
+  <button mat-icon-button [matMenuTriggerFor]="messageMenu" #menuTrigger="matMenuTrigger"><mat-icon>message</mat-icon></button>
+  <button mat-icon-button><mat-icon>exit_to_app</mat-icon></button>
+  <mat-menu #messageMenu="matMenu">
+    <button mat-menu-item>最新资讯</button>
+    <button mat-menu-item>讯息设定</button>
+  </mat-menu>
+</mat-toolbar>
+<div class="container-box">
+  <mat-sidenav-container>
+    <mat-sidenav #sideNav mode="push">
+      <mat-nav-list>
+        <h3 matSubheader>示范用页面</h3>
+        <a href="javascript:;" mat-list-item>问卷调查</a>
+        <a href="javascript:;" mat-list-item>部落格</a>
+        <a href="javascript:;" mat-list-item>收件夹</a>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>其他页面</h3>
+        <a href="javascript:;" mat-list-item>首页</a>
+        <a href="javascript:;" mat-list-item>Google</a>
+        <a href="javascript:;" mat-list-item>Facebook</a>
+        <mat-divider></mat-divider>
+        <h3 matSubheader>多行文字展示</h3>
+        <mat-list-item>
+          <p matLine>窗前明月光</p>
+          <p matLine>疑是地上霜</p>
+          <button mat-icon-button><mat-icon>chat</mat-icon></button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 matSubheader><mat-icon>chat_bubble</mat-icon>新资讯</h3>
+        <mat-list-item *ngIf="optNew.selected">这是新消息</mat-list-item>
+        <mat-list-item *ngIf="optAds.selected">这是广告消息</mat-list-item>
+        <mat-divider></mat-divider>
 
+        <h3 matSubheader><mat-icon>settings</mat-icon>咨询设定</h3>
+        <mat-selection-list>
+          <mat-list-option value="1" #optNew>有新资讯时通知我</mat-list-option>
+          <mat-list-option value="2" #optAds>展示广告讯息</mat-list-option>
+        </mat-selection-list>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content  style="width: 100%; height: calc(100vh - 64px)">
+      <button mat-button (click)="menuTrigger.toggleMenu()">切换按钮</button>
+      <div style="text-align: center">
+        <button mat-raised-button [matMenuTriggerFor]="positionMenu">开放讯息设定：这是一个较长的按钮，好确认Menu的方向</button>
+        <mat-menu #positionMenu="matMenu" [overlapTrigger]="false" xPosition="before" yPosition="above">
+          <button mat-menu-item>讯息1</button>
+          <button mat-menu-item>讯息2</button>
+          <button mat-menu-item>讯息3</button>
+        </mat-menu>
+      </div>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>第一行toolbar</mat-toolbar-row>
+        <mat-toolbar-row>第一行toolbar</mat-toolbar-row>
+      </mat-toolbar>
+
+      <!--<mat-horizontal-stepper>-->
+      <mat-vertical-stepper>
+        <mat-step>
+          <ng-template matStepLabel>
+              <u>个人咨询</u>
+          </ng-template>
+            <h4>提供个人咨询</h4>
+          <button mat-button matStepperNext>前进到【详细问题】</button>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>
+            <em>详细问题</em>
+          </ng-template>
+          <h4>主要的问题内容</h4>
+          <button mat-button matStepperPrevious>回到【个人咨询】</button>
+          <button mat-button matStepperNext>前进到【其他】</button>
+        </mat-step>
+        <mat-step label="其他">
+          <h4>其他问题</h4>
+        </mat-step>
+      </mat-vertical-stepper>
+      <div></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<router-outlet></router-outlet>

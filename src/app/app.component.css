@@ -1,0 +1,12 @@
+.header-bar{
+  position: fixed;
+  z-index: 99;
+}
+.container-box{
+  position: absolute;
+  padding-top: 64px;
+  width: 100%;
+}
+.toolbar-seprator{
+  flex: 1 1 auto;
+}

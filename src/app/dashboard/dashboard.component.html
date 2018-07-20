@@ -1,0 +1,66 @@
+<button mat-raised-button color="primary"> Hello World!</button>
+<button mat-raised-button color="primary"><mat-icon>thumb_up</mat-icon> ICON btn</button>
+<button mat-icon-button mat-raised-button color="primary"><mat-icon>thumb_up</mat-icon></button>
+<button mat-icon-button color="primary"><mat-icon>thumb_up</mat-icon></button>
+
+<i class="material-icons">person</i>
+<mat-icon color="primary">person</mat-icon><br>
+<button mat-fab>
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-fab color="primary">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-fab color="accent">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-fab color="warn">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-fab disabled>
+  <mat-icon>thumb_up</mat-icon>
+</button><br>
+<button mat-mini-fab>
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-mini-fab color="primary">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-mini-fab color="accent">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-mini-fab color="warn">
+  <mat-icon>thumb_up</mat-icon>
+</button>
+<button mat-mini-fab disabled>
+  <mat-icon>thumb_up</mat-icon>
+</button><br>
+
+<mat-button-toggle (click)="onChange()" color="primary">我是个开关</mat-button-toggle><br>
+
+<mat-button-toggle-group #formatAlignGroup="matButtonToggleGroup">
+  button toggle所代表的值
+
+  <mat-button-toggle value="left">
+    <mat-icon>format_align_left</mat-icon>
+  </mat-button-toggle>
+  预设被选取
+  <mat-button-toggle value="center" [checked]="true">
+    <mat-icon>format_align_center</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="right">
+    <mat-icon>format_align_right</mat-icon>
+  </mat-button-toggle>
+  不允许选择的button toggle
+  <mat-button-toggle value="justify" disabled>
+    <mat-icon>format_align_justify</mat-icon>
+  </mat-button-toggle>
+
+</mat-button-toggle-group>
+<div>对齐方式：{{formatAlignGroup.value}}</div>
+
+<div class="demo-ripple-container" mat-ripple [matRippleUnbounded]="false" [matRippleCentered]="false" [matRippleRadius]="10" [matRippleColor]="'pink'" [matRippleSpeedFactor]=".1"></div>
+
+<button mat-raised-button (click)="triggerRipple()">触发涟漪效果</button>
+<br>
+<button mat-raised-button (click)="clearRipple()">清楚涟漪效果</button>
